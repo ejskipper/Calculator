@@ -5,7 +5,7 @@ console.log('Please enter operator:');
 const operator=readline.prompt();
 
 switch(operator){
-    case '+':
+    case '+': {
     console.log('Please enter first number:');
     const response1=readline.prompt();
     const number1 = +response1;
@@ -15,10 +15,10 @@ switch(operator){
     const number2 = +response2;
     
     var answ = number1 + number2;
-    console.log(response1, 'added to', response2, 'is equal to', answ);
+    console.log(response1, 'added to', response2, 'is equal to', answ); }
     break;
 
-    case '-':
+    case '-': {
     console.log('Please enter first number:');
     const response1=readline.prompt();
     const number1 = +response1;
@@ -28,7 +28,7 @@ switch(operator){
     const number2 = +response2;
     
     var answ = number1 - number2;
-    console.log(response1, 'minus', response2, 'is equal to', answ);
+    console.log(response1, 'minus', response2, 'is equal to', answ); }
     break;
 
     case '/':
@@ -44,7 +44,7 @@ switch(operator){
     console.log(response1, 'divided by', response2, 'is equal to', answ);
     break;
 
-    case '*': 
+    case '*': {
     console.log('Please enter first number:');
     const response1=readline.prompt();
     const number1 = +response1;
@@ -54,11 +54,11 @@ switch(operator){
     const number2 = +response2;
     
     var answ = number1 * number2;
-    console.log(response1, 'multiplied by', response2, 'is equal to', answ);
+    console.log(response1, 'multiplied by', response2, 'is equal to', answ); }
     break;
 
-    default:
-    console.log('Invalid operator.');
+    default: {
+    console.log('Invalid operator.'); }
 }
 
 
