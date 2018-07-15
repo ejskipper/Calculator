@@ -1,38 +1,61 @@
-console.log('Welcome to the calculator!');
 const readline = require('readline-sync');
 
-console.log('Please enter operator:');
-const operator=readline.prompt();
-
-console.log('How many numbers do you want to ' + operator + '?');
-const response=readline.prompt();
-const number = +response
-
-var values=[];
-var i;
-for (i=0; i<number; i++) {
-console.log('Please enter number', (i+1));
-values[i]=+(readline.prompt());
+function printWelcomeMessage() {
+console.log('Welcome to the calculator!');
 }
 
-var answer=values[0];
-for (i=1; i<number; i++) {
-    if (operator == '+') {
-        answer += values[i];
-    }
-    else if (operator == '-') {
-        answer -= values[i]
-    }
-    else if (operator == '*') {
-        answer *= values[i];
-    }
-    else if (operator == '/') {
-        answer /= values[i];
+function enterNumber(promptText) {
+    console.log(promptText);
+    const response=readline.prompt();
+    const maybeNumber=+response;
+    const checkNumber= isNaN(maybeNumber);
+
+    if (checkNumber==true) {
+        console.log('Invalid number. Please enter a valid number.');
+        enterNumber(promptText);
     }
     else {
-    console.log('Invalid operator.')
+        number=maybeNumber;
     }
+    return number;
 }
 
-console.log('The answer is', (answer));
+function performOneCalculation() {
+        
+    console.log('Please enter operator:');
+    const operator=readline.prompt();
+
+    noOfInputs=enterNumber('How many numbers do you want to input?');
+
+    var values=[];
+    var i;
+    for (i=0; i<noOfInputs; i++) {
+    values[i]=enterNumber('Please enter number')
+    }
+
+    var answer=values[0];
+    for (i=1; i<noOfInputs; i++) {
+        if (operator == '+') {
+            answer += values[i];
+        }
+        else if (operator == '-') {
+            answer -= values[i]
+        }
+        else if (operator == '*') {
+            answer *= values[i];
+        }
+        else if (operator == '/') {
+            answer /= values[i];
+        }
+    }
+
+    console.log('The answer is', (answer));
+}
+
+printWelcomeMessage();
+const calcRun=1
+while (calcRun==1) {
+    performOneCalculation();
+}
+
 
