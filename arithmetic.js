@@ -16,10 +16,26 @@ function enterNumber(promptText) {
     return number;
 }
 
-exports.performOneArithmeticCalculation = function() {
-        
+function getOperator() {
     console.log('Please enter operator:');
-    const operator=readline.prompt();
+    var operator=readline.prompt();
+    try {
+        if (operator=='+'||operator=='-'||operator=='/'||operator=='*') {
+            return operator;
+        }
+        else {
+            throw'Invalid Operator'
+        }
+    }
+    catch (e) {
+        console.log(`"${operator}" is not a valid operator. Please enter a valid operator. (+, -, * or /)`)
+        operator=getOperator();
+    }
+    return operator;
+}
+exports.performOneArithmeticCalculation = function() {
+    
+    const operator=getOperator();
 
     noOfInputs=enterNumber(`How many numbers do you want to ${operator}?`);
 

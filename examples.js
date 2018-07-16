@@ -1,13 +1,21 @@
 const readline = require('readline-sync');
 
-function chooseMode() {
-    console.log(`Please select a calculator mode:
-    1) Arithmetic
-    2) Vowel Counting`)
-
-    const modeSelection=readline.prompt();
-    return modeSelection;
+function getOperator() {
+    console.log('Please enter operator:');
+    var operator=readline.prompt();
+    try {
+        if (operator=='+'||operator=='-'||operator=='/'||operator=='*') {
+            return operator;
+        }
+        else {
+            throw'Invalid Operator'
+        }
+    }
+    catch (e) {
+        console.log(`"${operator}" is not a valid operator. Please enter a valid operator. (+, -, * or /)`)
+        operator=getOperator();
+    }
+    return operator;
 }
 
-const modeSelection=chooseMode();
-console.log(modeSelection);
+operator=getOperator();
