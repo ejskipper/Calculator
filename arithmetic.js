@@ -32,16 +32,19 @@ exports.performOneArithmeticCalculation = function() {
     var answer=values[0];
     for (i=1; i<noOfInputs; i++) {
         if (operator == '+') {
-            answer += values[i];
+            var answer = values.reduce(function(first, second) {return first + second;}, 0);
         }
         else if (operator == '-') {
-            answer -= values[i]
+            latterValues = values.slice(1);
+            var answer = latterValues.reduce(function(first, second) {return first - second;}, values[0]);
         }
         else if (operator == '*') {
-            answer *= values[i];
+            var answer = values.reduce(function(first, second) {return first * second;}, 1);
         }
         else if (operator == '/') {
-            answer /= values[i];
+            latterValues = values.slice(1);
+            var nonZeroValues = latterValues.filter(function(item) {return item!==0});
+            var answer = nonZeroValues.reduce(function(first, second) {return first / second;}, values[0]);
         }
     }
 
